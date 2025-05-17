@@ -1,0 +1,345 @@
+:root {
+      --bg-primary: #f7fafd;
+      --bg-card: #fff;
+      --text-primary: #222;
+      --text-secondary: #666;
+      --text-muted: #888;
+      --border: #eef1f5;
+      --primary: #4f8cff;
+      --heart: #ff6b6b;
+      --steps: #22c55e;
+      --sleep: #a855f7;
+      --calories: #ff9a2f;
+      --success: #4ade80;
+      --danger: #f87171;
+      --card-radius: 16px;
+      --shadow: 0 8px 32px rgba(79,140,255,0.12), 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-hover: 0 12px 40px rgba(79,140,255,0.18), 0 4px 16px rgba(0,0,0,0.12);
+      --transition: 0.25s cubic-bezier(.4,2,.6,1);
+    }
+    body {
+      background: var(--bg-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      margin: 0;
+      min-height: 100vh;
+      transition: background var(--transition), color var(--transition);
+    }
+    .dark {
+      --bg-primary: #141b2b;
+      --bg-card: #1e273a;
+      --text-primary: #f3f5f7;
+      --text-secondary: #aeb8c6;
+      --text-muted: #7a8699;
+      --border: #232f47;
+      --primary: #4f8cff;
+      --shadow: 0 8px 32px rgba(79,140,255,0.18), 0 2px 8px rgba(0,0,0,0.18);
+      --shadow-hover: 0 12px 40px rgba(79,140,255,0.28), 0 4px 16px rgba(0,0,0,0.22);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 32px auto;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      gap: 16px;
+    }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-primary);
+    }
+    .header-date {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-top: 2px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-icon, .theme-toggle {
+      background: none;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      transition: background var(--transition), color var(--transition);
+      position: relative;
+    }
+    .btn-icon:hover, .theme-toggle:hover {
+      background: rgba(79,140,255,0.08);
+      color: var(--primary);
+    }
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--card-radius);
+      padding: 24px 20px 20px 20px;
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px) scale(1.02);
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      margin-left: 8px;
+      background: rgba(79,140,255,0.07);
+    }
+    .heart-icon { color: var(--heart);}
+    .steps-icon { color: var(--steps);}
+    .sleep-icon { color: var(--sleep);}
+    .calories-icon { color: var(--calories);}
+    .card-value {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+    .card-unit {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .card-diff {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      font-weight: 500;
+      gap: 4px;
+    }
+    .diff-up { color: var(--success);}
+    .diff-down { color: var(--danger);}
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .main-charts {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .chart-container {
+      background: var(--bg-card);
+      border-radius: var(--card-radius);
+      padding: 24px 20px 20px 20px;
+      box-shadow: var(--shadow);
+      margin: 0;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+    }
+    .chart-container:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px) scale(1.01);
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .chart-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .chart-tabs {
+      display: flex;
+      gap: 8px;
+    }
+    .chart-tab {
+      background: none;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+    .chart-tab.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    .chart-content {
+      position: relative;
+      height: 220px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .chart-data {
+      display: none;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+    }
+    .chart-data.active {
+      display: block;
+      z-index: 1;
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .chart-footer {
+      display: flex;
+      gap: 18px;
+      margin-top: 10px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .chart-legend {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-color {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .two-charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .smartwatch-panel {
+      background: var(--bg-card);
+      border-radius: var(--card-radius);
+      padding: 24px 20px 20px 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      position: relative;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .smartwatch-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+    }
+    .smartwatch-icon {
+      color: #10b981;
+      font-size: 1.2rem;
+    }
+    .smartwatch-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    .smartwatch-value {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .connected { color: var(--success);}
+    .sync-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background var(--transition);
+    }
+    .sync-btn:hover { opacity: 0.93;}
+    .edit-btn {
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 11px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    @media (max-width: 1200px) {
+      .container { max-width: 98vw; padding: 12px;}
+      .dashboard-grid { gap: 18px;}
+      .main-charts { gap: 18px;}
+      .two-charts-grid { gap: 18px;}
+      .summary-cards { gap: 14px;}
+    }
+    @media (max-width: 900px) {
+      .dashboard-grid { grid-template-columns: 1fr;}
+      .main-charts { gap: 18px;}
+      .two-charts-grid { grid-template-columns: 1fr;}
+      .summary-cards { grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 600px) {
+      .container { padding: 2vw;}
+      .header { flex-direction: column; align-items: flex-start; gap: 8px;}
+      .summary-cards { grid-template-columns: 1fr;}
+      .dashboard-grid { gap: 8px;}
+      .main-charts { gap: 8px;}
+      .two-charts-grid { gap: 8px;}
+      .chart-container, .smartwatch-panel { padding: 12px;}
+    }

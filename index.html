@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>Health Dashboard</h1>
+        <div class="header-date">Today, 17/5/2025</div>
+      </div>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="btn-icon" aria-label="Profile">
+          <i class="fa-solid fa-user"></i>
+        </button>
+      </div>
+    </div>
+    <div class="summary-cards">
+      <div class="card">
+        <div class="card-title">
+          Heart Rate
+          <span class="card-icon heart-icon"><i class="fa-solid fa-heart"></i></span>
+        </div>
+        <div class="card-value">78 <span class="card-unit">bpm</span></div>
+        <div class="card-diff diff-up">▲ 2.5% vs yesterday</div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          Steps
+          <span class="card-icon steps-icon"><i class="fa-solid fa-shoe-prints"></i></span>
+        </div>
+        <div class="card-value">6,472</div>
+        <div class="card-diff diff-down">▼ 8.3% vs yesterday</div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          Sleep
+          <span class="card-icon sleep-icon"><i class="fa-solid fa-bed"></i></span>
+        </div>
+        <div class="card-value">7.5 <span class="card-unit">hrs</span></div>
+        <div class="card-diff diff-up">▲ 12.4% vs yesterday</div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          Calories
+          <span class="card-icon calories-icon"><i class="fa-solid fa-fire"></i></span>
+        </div>
+        <div class="card-value">1,842 <span class="card-unit">kcal</span></div>
+        <div class="card-diff diff-up">▲ 5.1% vs yesterday</div>
+      </div>
+    </div>
+    <div class="dashboard-grid">
+      <div class="main-charts">
+        <div class="chart-container">
+          <div class="chart-header">
+            <div class="chart-title">Heart Rate</div>
+            <div class="chart-tabs">
+              <button class="chart-tab active" data-chart="heart-day">Day</button>
+              <button class="chart-tab" data-chart="heart-week">Week</button>
+              <button class="chart-tab" data-chart="heart-month">Month</button>
+            </div>
+          </div>
+          <div class="chart-content">
+            <div class="chart-data active" id="heart-day-container">
+              <canvas id="heart-day-chart"></canvas>
+            </div>
+            <div class="chart-data" id="heart-week-container">
+              <canvas id="heart-week-chart"></canvas>
+            </div>
+            <div class="chart-data" id="heart-month-container">
+              <canvas id="heart-month-chart"></canvas>
+            </div>
+          </div>
+          <div class="chart-footer">
+            <div class="chart-legend">
+              <span class="legend-color" style="background-color: #f87171;"></span> Max: 105 bpm
+            </div>
+            <div class="chart-legend">
+              <span class="legend-color" style="background-color: #4f8cff;"></span> Avg: 78 bpm
+            </div>
+            <div class="chart-legend">
+              <span class="legend-color" style="background-color: #4ade80;"></span> Min: 58 bpm
+            </div>
+          </div>
+        </div>
+        <div class="two-charts-grid">
+          <div class="chart-container">
+            <div class="chart-header">
+              <div class="chart-title">Steps</div>
+              <div class="chart-tabs">
+                <button class="chart-tab active" data-chart="steps-day">Day</button>
+                <button class="chart-tab" data-chart="steps-week">Week</button>
+                <button class="chart-tab" data-chart="steps-month">Month</button>
+              </div>
+            </div>
+            <div class="chart-content">
+              <div class="chart-data active" id="steps-day-container">
+                <canvas id="steps-day-chart"></canvas>
+              </div>
+              <div class="chart-data" id="steps-week-container">
+                <canvas id="steps-week-chart"></canvas>
+              </div>
+              <div class="chart-data" id="steps-month-container">
+                <canvas id="steps-month-chart"></canvas>
+              </div>
+            </div>
+            <div style="margin-top: 10px; font-size: 1rem; color: var(--text-secondary); display: flex; justify-content: space-between;">
+              <span>Daily goal: 10,000 steps</span>
+              <span style="color: var(--primary);">64% complete</span>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div class="chart-header">
+              <div class="chart-title">Sleep</div>
+              <div class="chart-tabs">
+                <button class="chart-tab active" data-chart="sleep-day">Day</button>
+                <button class="chart-tab" data-chart="sleep-week">Week</button>
+                <button class="chart-tab" data-chart="sleep-month">Month</button>
+              </div>
+            </div>
+            <div class="chart-content">
+              <div class="chart-data active" id="sleep-day-container">
+                <canvas id="sleep-day-chart"></canvas>
+              </div>
+              <div class="chart-data" id="sleep-week-container">
+                <canvas id="sleep-week-chart"></canvas>
+              </div>
+              <div class="chart-data" id="sleep-month-container">
+                <canvas id="sleep-month-chart"></canvas>
+              </div>
+            </div>
+            <div class="chart-footer">
+              <div class="chart-legend">
+                <span class="legend-color" style="background-color: #4f8cff;"></span> Deep: 1.5h
+              </div>
+              <div class="chart-legend">
+                <span class="legend-color" style="background-color: #4ade80;"></span> Light: 4.2h
+              </div>
+              <div class="chart-legend">
+                <span class="legend-color" style="background-color: #a855f7;"></span> REM: 1.8h
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-container">
+          <div class="chart-header">
+            <div class="chart-title">Calories</div>
+            <div class="chart-tabs">
+              <button class="chart-tab active" data-chart="calories-day">Day</button>
+              <button class="chart-tab" data-chart="calories-week">Week</button>
+              <button class="chart-tab" data-chart="calories-month">Month</button>
+            </div>
+          </div>
+          <div class="chart-content">
+            <div class="chart-data active" id="calories-day-container">
+              <canvas id="calories-day-chart"></canvas>
+            </div>
+            <div class="chart-data" id="calories-week-container">
+              <canvas id="calories-week-chart"></canvas>
+            </div>
+            <div class="chart-data" id="calories-month-container">
+              <canvas id="calories-month-chart"></canvas>
+            </div>
+          </div>
+          <div style="margin-top: 10px; font-size: 1rem; color: var(--text-secondary); display: flex; justify-content: space-between;">
+            <span>Daily target: 2,200 kcal</span>
+            <span style="color: var(--primary);">Burned: 1,842 kcal</span>
+          </div>
+        </div>
+      </div>
+      <div style="height: 340px;">
+        <div class="smartwatch-panel">
+          <div class="smartwatch-title">
+            <i class="fa-solid fa-watch smartwatch-icon"></i>
+            Smartwatch
+          </div>
+          <div class="smartwatch-info">
+            <span>Status:</span>
+            <span class="smartwatch-value connected">Connected</span>
+          </div>
+          <div class="smartwatch-info">
+            <span>Battery:</span>
+            <span class="smartwatch-value" id="battery-value">82%</span>
+          </div>
+          <div class="smartwatch-info">
+            <span>Last synced:</span>
+            <span class="smartwatch-value" id="last-synced">06:35:41 PM</span>
+          </div>
+          <button class="sync-btn">
+            <i class="fa-solid fa-rotate"></i>
+            Sync Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
