@@ -45,6 +45,15 @@
     });
 
 
+    document.getElementById('syncBtn').addEventListener('click', function() {
+    const now = new Date(); // Gets current date and time from the system[2][5][8]
+    // Format as "Monday, 19 May, 2025"
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString('en-IN', options);
+    document.getElementById('displayDate').textContent = formattedDate;
+});
+
+
 
     // Chart.js global options for tooltips and responsive
     Chart.defaults.plugins.tooltip.enabled = true;

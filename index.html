@@ -14,7 +14,7 @@
     <div class="header">
       <div>
         <h1>Health Dashboard</h1>
-        <div class="header-date">Today, 17/5/2025</div>
+        <div class="header-date" id="displayDate">Today, 17/5/2025</div>
       </div>
       <div class="header-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
@@ -196,7 +196,7 @@
             <span>Last synced:</span>
             <span class="smartwatch-value" id="last-synced">06:35:41 PM</span>
           </div>
-          <button class="sync-btn">
+          <button class="sync-btn" id="syncBtn">
             <i class="fa-solid fa-rotate"></i>
             Sync Now
           </button>
